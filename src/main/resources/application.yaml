@@ -6,7 +6,7 @@ spring:
     name: account-service
 
   datasource:
-    url: jdbc:h2:mem:bank_db
+    url: jdbc:h2:file:./data/bank_db
     driver-class-name: org.h2.Driver
     username: sa
     password:
@@ -20,3 +20,7 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+bank:
+  transaction:
+    max-amount: 1000

@@ -1,0 +1,26 @@
+
+type Transaction {
+    id: ID!
+    accountId: ID!
+    amount: Float!
+    currency: String!
+    merchantCategory: String!
+    country: String!
+    createdAt: String
+}
+
+extend type Query {
+    transactions: [Transaction!]!
+    transactionById(id: ID!): Transaction
+    transactionsByAccount(accountId: ID!): [Transaction!]!
+}
+
+extend type Mutation {
+    createTransaction(
+        accountId: ID!
+        amount: Float!
+        currency: String!
+        merchantCategory: String!
+        country: String!
+    ): Transaction
+}

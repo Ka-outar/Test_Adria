@@ -47,4 +47,19 @@ public class AccountService {
         Account account = getAccountById(id);
         accountRepository.delete(account);
     }
+
+
+    public Account adjustBalance(UUID id, double amount) {
+        Account account = getAccountById(id);
+
+        double newBalance = account.getBalance() + amount;
+
+        if (newBalance < 0) {
+            throw new RuntimeException("Insufficient balance");
+        }
+
+        account.setBalance(newBalance);
+        return accountRepository.save(account);
+    }
+
 }
